@@ -9,7 +9,6 @@ class StanzaTest {
 
 	private Stanza stanza;
 	private Attrezzo attrezzo;
-	private Stanza stanza = new Stanza("n18");
 	
 	@BeforeEach
 	public void setUp() {
