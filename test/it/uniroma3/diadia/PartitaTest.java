@@ -30,11 +30,31 @@ class PartitaTest {
 		assertFalse(this.partita.vinta(), "Se la stanza 'fittizzia' non e' uguale a quella vincente, il giocatore perde");
 	}
 	
-	/*@Test
-	void testIsFinita() {
+	
+	
+	@Test
+	public void testIsFinita_FlagFinitaTrue() {
+	    this.partita.setFinita();
+	    assertTrue(this.partita.isFinita(), 
+	        "La partita deve risultare finita quando viene chiamato setFinita()");
+	}
+
+	
+	@Test
+	public void testIsFinita_CfuZero() {
+	    this.partita.getGiocatore().setCfu(0);
+	    assertTrue(this.partita.isFinita(),
+	        "La partita deve risultare finita quando i CFU del giocatore sono 0");
+	}
+
+	
+	@Test
+	public void testIsFinita_InizioPartitaFalse() {
+	    assertFalse(this.partita.isFinita(),
+	        "All'inizio la partita non deve essere finita");
 	}
 	
-*/
+
 	
 	/*
 	 Tolgo i test dei cfu poiche li abbiamo tolti da partita a giocatore
