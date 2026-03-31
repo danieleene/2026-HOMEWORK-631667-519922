@@ -73,7 +73,10 @@ public class DiaDia {
 		if (this.partita.vinta()) {
 			this.console.mostraMessaggio("Hai vinto!");
 			return true;
-		} else
+		} else if(this.partita.isFinita()){
+			this.console.mostraMessaggio("Game Over!");
+			return true;
+		}
 			return false;
 	}   
 
