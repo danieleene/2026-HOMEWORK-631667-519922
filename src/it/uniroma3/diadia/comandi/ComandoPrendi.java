@@ -3,10 +3,16 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+
+
 public class ComandoPrendi implements Comando {
+	
+	//variabili d'istanza
 	private String messaggio;
 	private String object;
 	private IO io;
+	
+	
 	@Override
 	public void setIo(IO io) {
 		this.io=io;

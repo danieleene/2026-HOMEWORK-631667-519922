@@ -3,10 +3,16 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.ambienti.Stanza;
+
+
 public class ComandoGuarda implements Comando {
+	
+	//variabili d'istanza
 	private String object;
 	private String messaggio;
 	private IO io;
+	
+	
 	@Override
 	public void setIo(IO io) {
 		this.io=io;

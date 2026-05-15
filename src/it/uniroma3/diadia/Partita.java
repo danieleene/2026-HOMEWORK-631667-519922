@@ -14,20 +14,32 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class Partita {
 
+	//variabili d'istanza
 	private Labirinto labirinto;
 	private Giocatore giocatore;
-	
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	
+	//Costruttori
 	public Partita(){
 		this.labirinto=new Labirinto();
 		this.giocatore= new Giocatore();
 		this.stanzaCorrente=this.labirinto.getStanzaIniziale();
-		
 		this.finita = false;
 	}
 
+	
+	
+	public Partita(Labirinto labirinto) {
+	    this.labirinto = labirinto;
+	    this.giocatore = new Giocatore();
+	    this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+	    this.finita = false;
+	}
+
+	
+	
+	
     /*
      * Metodo creaStanze(), getter e setter delle stanze spostate in Labirinto
     */

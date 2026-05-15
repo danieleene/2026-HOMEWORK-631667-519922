@@ -3,9 +3,12 @@ package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
+	
+	//variabili d'istanza
 	private Stanza stanzaIniziale;
 	private Stanza stanzaFinale;
 	
+	//Costruttore
 	public Labirinto() {
 		creaStanze();
 	}
@@ -45,7 +48,9 @@ public class Labirinto {
         stanzaIniziale = atrio;  
 		stanzaFinale = biblioteca;
     }
+    
 
+    //Getter & Setter
 	public Stanza getStanzaVincente() {
 		return stanzaFinale;
 	}
@@ -58,4 +63,8 @@ public class Labirinto {
 		return this.stanzaIniziale;
 	}
 	
+	
+	public void setStanzaFinale(Stanza stanzaFinale) {
+		this.stanzaFinale = stanzaFinale;
+	}
 }

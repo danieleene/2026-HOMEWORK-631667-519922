@@ -14,6 +14,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
  */
 public class Attrezzo {
 
+	//variabili d'istanza
 	private String nome;
 	private int peso;
 

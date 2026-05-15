@@ -2,13 +2,23 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.IO;
+
+
 public class ComandoVai implements Comando{
+	
+	//variabili d'istanza
 	private String direzione;
 	private String messaggio;
 	private IO io;
+	
+	
+	//Costruttore
 	public ComandoVai() {
 		
 	}
+	
+	
+	
 	@Override
 	public void setIo(IO io) {
 		this.io=io;

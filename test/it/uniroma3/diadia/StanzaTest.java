@@ -29,8 +29,15 @@ class StanzaTest {
 	void testAddAttrezzo_VerificaIncremento() {
 		this.stanza.addAttrezzo(this.attrezzo);
 		
-		assertNotNull(this.stanza.getAttrezzi()[0], "L'attrezzo deve essere inserito nell'array");
-		assertEquals("Attrezzo test", this.stanza.getAttrezzi()[0].getNome(), "Il nome deve combaciare");
+		assertFalse(this.stanza.getAttrezzi().isEmpty(), 
+		        "La collezione di attrezzi non deve essere vuota");
+		
+		assertTrue(this.stanza.getAttrezzi().contains(this.attrezzo),
+		        "La stanza deve contenere l'attrezzo inserito");
+		
+		
+		assertNotNull(this.stanza.getAttrezzo("Attrezzo test"),
+		        "L'attrezzo deve essere recuperabile tramite il nome");
 	}
 	@Test
 	void testAddAttrezzo_StanzaPiena() {
@@ -45,7 +52,9 @@ class StanzaTest {
 		boolean result=this.stanza.addAttrezzo(null);
 		
 		assertFalse(result, "Metodo deve restituire false e rifiutare l'inserimento di un attrezzo non esistente (null) per evitare di creare errori");
-		assertNull(this.stanza.getAttrezzi()[0], "L'attrezzo nullo non deve essere inserito nell'array");
+		
+		assertTrue(this.stanza.getAttrezzi().isEmpty(),
+		        "La collezione deve rimanere vuota dopo un inserimento fallito");
 	}
 	
 	
