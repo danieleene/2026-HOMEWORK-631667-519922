@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 public class LabirintoBuilder {
 	private Labirinto labirinto;
@@ -77,5 +78,14 @@ public class LabirintoBuilder {
 	public Map<String, Stanza> getListaStanze(){
 		return Collections.unmodifiableMap(this.stanze);
 	}
+	
+	
+	public LabirintoBuilder addPersonaggio(AbstractPersonaggio personaggio) {
+	    if (this.ultimaStanzaAggiunta != null) {
+	        this.ultimaStanzaAggiunta.setPersonaggio(personaggio);
+	    }
+	    return this;
+	}
+
 	
 }

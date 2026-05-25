@@ -4,35 +4,30 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.IO;
 
 
-public class ComandoAiuto implements Comando {
-	
-	//variabili d'istanza
+public class ComandoAiuto extends AbstractComando {
+
 	private IO io;
-	private static String[] elencoComandi= {"vai", "aiuto", "prendi", "posa", "guarda", "fine"};
 	private String messaggio;
-	
-	
+
 	@Override
-	public void setIo(IO io)
-	{ 
-		this.io = io; 
+	public void setIo(IO io) {
+		this.io = io;
 	}
+
 	@Override
 	public void esegui(Partita partita) {
-		for(int i=0;i<elencoComandi.length;i++) {
-			this.io.mostraMessaggio(elencoComandi[i]+" ");
+		for (String nome : AbstractComando.getNomiComandi()) {
+			this.io.mostraMessaggio(nome + " ");
 		}
 	}
 
-	@Override
-	public void setParametro(String parametro) {
 
-	}
 	@Override
 	public String getNome() {
-
 		return "aiuto";
 	}
+
+
 
 	@Override
 	public String getParametro() {

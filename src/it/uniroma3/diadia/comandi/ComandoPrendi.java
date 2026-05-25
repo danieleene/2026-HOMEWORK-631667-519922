@@ -5,7 +5,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
-public class ComandoPrendi implements Comando {
+public class ComandoPrendi extends AbstractComando {
 	
 	//variabili d'istanza
 	private String messaggio;

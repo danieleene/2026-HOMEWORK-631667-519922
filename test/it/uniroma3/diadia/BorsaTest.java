@@ -161,7 +161,9 @@ class BorsaTest {
         Map<Integer, Set<Attrezzo>> mappa = borsa.getContenutoRaggruppatoPerPeso();
 
         assertEquals(3, mappa.size());
+        
         assertTrue(mappa.containsKey(1));
+        assertTrue(mappa.containsKey(2));
         assertTrue(mappa.containsKey(3));
 
         assertEquals(Set.of(osso), mappa.get(1));

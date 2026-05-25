@@ -1,10 +1,11 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 import it.uniroma3.diadia.IO;
 
 
-public class ComandoVai implements Comando{
+public class ComandoVai extends AbstractComando{
 	
 	//variabili d'istanza
 	private String direzione;
@@ -37,6 +38,13 @@ public class ComandoVai implements Comando{
 			return;
 		}
 		partita.setStanzaCorrente(prossimaStanza);
+		
+		AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
+		if (personaggio != null)
+		    this.io.mostraMessaggio("Personaggio presente: " + personaggio.getNome());
+		else
+		    this.io.mostraMessaggio("Non c'è nessuno nella stanza.");
+
 		this.io.mostraMessaggio(partita.getStanzaCorrente().toString());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);
 	}

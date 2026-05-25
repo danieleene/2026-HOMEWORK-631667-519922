@@ -16,8 +16,10 @@ import it.uniroma3.diadia.comandi.ComandoPosa;
 
 
 class ComandoPosaTest {
+	
 	private ComandoPosa comando;
 	private IO io;
+	
 
 	@BeforeEach
 	void setUp() {

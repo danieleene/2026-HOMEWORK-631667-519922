@@ -4,8 +4,15 @@ import java.util.Scanner;
 
 public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 
+
+	private IO io;
+
+	public FabbricaDiComandiFisarmonica(IO io) {
+		this.io = io;
+	}
+
 	@Override
-	public Comando costruisciComando(String istruzione, IO io) {
+	public Comando costruisciComando(String istruzione) {
 		Scanner scannerDiParole=new Scanner(istruzione);
 		String nomeComando=null;
 		String parametro=null;
@@ -44,6 +51,21 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 
 			comando = new ComandoGuarda();
 		}
+
+		else if (nomeComando.equals("saluta")) {
+
+			comando = new ComandoSaluta();
+		}
+
+		else if (nomeComando.equals("interagisci")) {
+
+			comando = new ComandoInteragisci();
+		}
+
+		else if (nomeComando.equals("regala")) {
+			comando = new ComandoRegala();
+		}
+
 		else {comando = new ComandoNonValido();} 
 
 		comando.setParametro(parametro); 

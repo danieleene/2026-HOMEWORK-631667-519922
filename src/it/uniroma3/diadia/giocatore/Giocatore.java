@@ -1,9 +1,12 @@
 package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.Configurazione;
+
 public class Giocatore {
 
 	//variabili d'istanza
-	static final private int CFU_INIZIALI = 20;
+	static final private int CFU_INIZIALI = Configurazione.getCFUIniziali();
+;
 	private int cfu;
 	private Borsa borsa;
 	

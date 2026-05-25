@@ -1,6 +1,9 @@
 package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,13 +17,13 @@ public class FabbricaDiComandiFisarmonicaTest {
 
 	@BeforeEach
 	void setUp() {
-		this.factory = new FabbricaDiComandiFisarmonica();
-		this.io=new IOConsole();
+		this.factory = new FabbricaDiComandiFisarmonica(io);
+		this.io=new IOConsole(new Scanner(""));
 	}
 
 	@Test
 	void testComandoVai() {
-		Comando c = factory.costruisciComando("vai nord", this.io);
+		Comando c = factory.costruisciComando("vai nord");
 		assertEquals("vai", c.getNome());
 		assertEquals("nord", c.getParametro());
 	}
@@ -28,7 +31,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 
 	@Test
 	void testComandoAiuto() {
-		Comando c = factory.costruisciComando("aiuto",this.io);
+		Comando c = factory.costruisciComando("aiuto");
 		assertEquals("aiuto", c.getNome());
 		assertNull(c.getParametro());
 	}
@@ -36,21 +39,21 @@ public class FabbricaDiComandiFisarmonicaTest {
 
 	@Test
 	void testComandoFine() {
-		Comando c = factory.costruisciComando("fine",this.io);
+		Comando c = factory.costruisciComando("fine");
 		assertEquals("fine", c.getNome());
 		assertNull(c.getParametro());
 	}
 
 	@Test
 	void testComandoGuarda() {
-		Comando c = factory.costruisciComando("guarda",this.io);
+		Comando c = factory.costruisciComando("guarda");
 		assertEquals("guarda", c.getNome());
 		assertNull(c.getParametro());
 	}
 
 	@Test
 	void testComandoNonValido() {
-		Comando c = factory.costruisciComando("xyz",this.io);
+		Comando c = factory.costruisciComando("xyz");
 		assertEquals("Non valido", c.getNome());
 		assertNull(c.getParametro());
 	}
@@ -60,14 +63,14 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	@Test
 	void testComandoPrendi() {
-	    Comando c = factory.costruisciComando("prendi chiave",this.io);
+	    Comando c = factory.costruisciComando("prendi chiave");
 	    assertEquals("prendi", c.getNome());
 	    assertEquals("chiave", c.getParametro());
 	}
 
 	@Test
 	void testComandoPosa() {
-	    Comando c = factory.costruisciComando("posa lanterna",this.io);
+	    Comando c = factory.costruisciComando("posa lanterna");
 	    assertEquals("posa", c.getNome());
 	    assertEquals("lanterna", c.getParametro());
 	}

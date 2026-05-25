@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class PartiteSimulate {
 
 	@Test
-	public void testPartitaMonolocaleVittoriaStart() {
+	public void testPartitaMonolocaleVittoriaStart() throws Exception {
 		Labirinto labirinto=new LabirintoBuilder()
 				.addStanzaIniziale("Biblioteca")
 				.addStanzaVincente("Biblioteca")
@@ -23,7 +23,7 @@ public class PartiteSimulate {
 		assertTrue(io.getMessaggiStampati().contains("Hai vinto!"), "Che succede qui?");
 	}
 	@Test
-    public void testPartitaBilocaleSpostamentoEVittoria() {
+    public void testPartitaBilocaleSpostamentoEVittoria() throws Exception {
         // 1. Costruiamo un bilocale collegato
         Labirinto labirinto = new LabirintoBuilder()
                 .addStanzaIniziale("Atrio")
@@ -45,7 +45,7 @@ public class PartiteSimulate {
         assertTrue(risposteAlVaiNord.contains("Hai vinto!"));
     }
 	@Test
-	public void testEsplorazioneSemplice() {
+	public void testEsplorazioneSemplice() throws Exception {
 		Labirinto labirinto=new LabirintoBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Aula N11")
