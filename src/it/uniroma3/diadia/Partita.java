@@ -67,7 +67,11 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente().getNome().equals(getStanzaVincente().getNome());
+		Stanza corrente = this.getStanzaCorrente();
+		Stanza vincente = this.getStanzaVincente();
+		
+		// Un controllo di sicurezza null-safe e comparazione diretta tramite equals()
+		return corrente != null && corrente.equals(vincente);
 	}
 
 	/**

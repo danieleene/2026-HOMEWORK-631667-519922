@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -88,29 +89,14 @@ class StanzaTest {
 
 	@Test
     void testGetStanzaAdiacenteInesistente() {
-        assertNull(stanza.getStanzaAdiacente("n18"));
+        assertNull(this.stanza.getStanzaAdiacente(Direzione.NORD));
     }
-
-	
-	//SISTEMA!
-	@Test
-	void testSetStanzaAdiacenteMultiDirezioniNoLimite() {
-	    stanza.impostaStanzaAdiacente("nord", new Stanza("A"));
-	    stanza.impostaStanzaAdiacente("sud", new Stanza("B"));
-	    stanza.impostaStanzaAdiacente("est", new Stanza("C"));
-	    stanza.impostaStanzaAdiacente("ovest", new Stanza("D"));
-	    Stanza stanzaAlto=new Stanza("E");
-	    stanza.impostaStanzaAdiacente("alto", stanzaAlto);
-	    assertEquals(stanzaAlto, stanza.getStanzaAdiacente("alto"),"La mappa deve supportare direzioni arbitrarie");
-	    
-	}
-		
 	@Test 
 	void testAddStanzaAdiacente() {
 	    Stanza stanza = new Stanza("N11");
 	    Stanza bagno = new Stanza("Bagno");
-	    stanza.impostaStanzaAdiacente("nord", bagno);
-	    assertEquals(bagno, stanza.getStanzaAdiacente("nord"));
+	    stanza.impostaStanzaAdiacente(Direzione.NORD, bagno);
+	    assertEquals(bagno, stanza.getStanzaAdiacente(Direzione.NORD));
 	}
 	
 }

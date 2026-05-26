@@ -63,6 +63,6 @@ public class Attrezzo implements Comparable<Attrezzo>{
 	}
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(this,getNome(),this.getPeso());
+		return java.util.Objects.hash(this.getNome(),this.getPeso());
 	}
 }

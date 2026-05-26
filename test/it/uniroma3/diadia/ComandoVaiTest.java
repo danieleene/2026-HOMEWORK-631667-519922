@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
-import it.uniroma3.diadia.ambienti.Stanza;
+
 import it.uniroma3.diadia.comandi.ComandoVai;
 public class ComandoVaiTest {
 
@@ -25,7 +25,7 @@ public class ComandoVaiTest {
 
 	@Test
 	void testVaiMonolocaleDirInesistente() {
-		Labirinto monolocale=new LabirintoBuilder()
+		Labirinto monolocale=Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.getLabirinto();
 		Partita partita=new Partita(monolocale);
@@ -37,10 +37,10 @@ public class ComandoVaiTest {
 	@Test
 	void testVai_Bilocale_DirezioneNull() {
 		// FIXTURE 2: Bilocale
-		Labirinto bilocale = new LabirintoBuilder()
+		Labirinto bilocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
 				.getLabirinto();
 		Partita partita = new Partita(bilocale);
 		
@@ -52,10 +52,10 @@ public class ComandoVaiTest {
 	}
 	@Test
 	void testVai_Bilocale_VaiNord() {
-		Labirinto bilocale = new LabirintoBuilder()
+		Labirinto bilocale =Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
 				.getLabirinto();
 		Partita partita = new Partita(bilocale);
 
@@ -67,10 +67,10 @@ public class ComandoVaiTest {
 	}
 	@Test
 	void testVai_Bilocale_VaiNordFallito() {
-		Labirinto bilocale = new LabirintoBuilder()
+		Labirinto bilocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
 				.getLabirinto();
 		Partita partita = new Partita(bilocale);
 
@@ -85,10 +85,10 @@ public class ComandoVaiTest {
 	}
 	@Test
 	void testCfuDiminuisce() {
-		Labirinto bilocale = new LabirintoBuilder()
+		Labirinto bilocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
 				.getLabirinto();
 		Partita partita = new Partita(bilocale);
 		

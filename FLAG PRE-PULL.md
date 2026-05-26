@@ -31,7 +31,7 @@ istanza delle sottoclassi concrete dei comandi '
  
  * Ricava automaticamente il nome del comando dal nome della classe
  * Registra il nome del comando nel registro statico condiviso
- * Permette a ComandoAiuto di leggere l’elenco(che non deve più conoscere!)
+ * Permette a ComandoAiuto di leggere lï¿½elenco(che non deve piï¿½ conoscere!)
  
  
  2) E' stato rifattorizzato il codice di ComandoAiuto(il metodo esegui) 
@@ -51,3 +51,5 @@ istanza delle sottoclassi concrete dei comandi '
      diadia.properties
   
   
+  1) Ho modificato la classe CaricatoreLabirinto affinche' fosse bug-free e aggiunto i vari test riguardante labirinti di vario tipo, aggiunti come Fixture e gestione degli errori. Aggiunto anche un metodo sovraccarico di addAttrezzo.
+  2)

@@ -8,12 +8,12 @@ public class IOConsole implements IO{
 		this.scanner = scanner;
 	}
 
-
+	@Override
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
-
+	@Override
 	public String leggiRiga() {
-		return this.scanner.nextLine();
+		return scanner.nextLine();
 	}
 }

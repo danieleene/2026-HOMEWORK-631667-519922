@@ -1,10 +1,9 @@
 package it.uniroma3.diadia.ambienti;
 
-import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
@@ -22,12 +21,11 @@ import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 public class Stanza {
 
-	private static final String[] DIREZIONI_CONSENTITE= {"nord","sud","est","ovest"};
 
 	//variabili d'istanza
 	private String nome;
 	private Map<String, Attrezzo> attrezzi;
-	private Map<String, Stanza> stanzeAdiacenti;
+	private Map<Direzione, Stanza> stanzeAdiacenti;
 	private AbstractPersonaggio personaggio;
 
 
@@ -49,7 +47,7 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
+	public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
 		this.stanzeAdiacenti.put(direzione, stanza);
 	}
 
@@ -57,7 +55,7 @@ public class Stanza {
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * @param direzione
 	 */
-	public Stanza getStanzaAdiacente(String direzione) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 		return this.stanzeAdiacenti.get(direzione);
 	}
 
@@ -136,7 +134,7 @@ public class Stanza {
 
 
 
-	public Map<String, Stanza> getMapStanzeAdiacenti(){
+	public Map<Direzione, Stanza> getMapStanzeAdiacenti(){
 		return this.stanzeAdiacenti;
 	}
 	@Override
@@ -150,10 +148,12 @@ public class Stanza {
 	public int hashCode() {
 		return java.util.Objects.hash(this.getNome());
 	}
+	
 	public java.util.List<Attrezzo> getAttrezzi(){
 		return new java.util.ArrayList<>(this.attrezzi.values());
 	}
-	public java.util.List<String> getDirezioni(){
+	
+	public java.util.List<Direzione> getDirezioni(){
 		return new java.util.ArrayList<>(this.stanzeAdiacenti.keySet());
 	}
 	public boolean isMagica() {
