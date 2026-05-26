@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.ComandoPrendi;
 import java.util.ArrayList;
 
@@ -28,7 +27,7 @@ class ComandoPrendiTest {
 	void testPrendi_AttrezzoPresenteInStanza() {
 		// FIXTURE: Creiamo un monolocale e usiamo il metodo addAttrezzo del Builder 
 		// per posizionare l'oggetto direttamente sulla mappa valida.
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addAttrezzo("chiave", 1) 
 				.getLabirinto();
@@ -48,7 +47,7 @@ class ComandoPrendiTest {
 	@Test
 	void testPrendi_AttrezzoAssenteInStanza() {
 		// FIXTURE: Monolocale completamente vuoto
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.getLabirinto();
 		Partita partita = new Partita(monolocale);
@@ -65,7 +64,7 @@ class ComandoPrendiTest {
 	@Test
 	void testPrendi_SenzaParametro() {
 		// FIXTURE: Monolocale con attrezzo a terra
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale =Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addAttrezzo("chiave", 1)
 				.getLabirinto();

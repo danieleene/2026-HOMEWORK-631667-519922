@@ -12,7 +12,10 @@ class LabirintoTest {
 	private Labirinto labirinto;
 	@BeforeEach
 	public void setUp() {
-		this.labirinto= new Labirinto();
+		this.labirinto= Labirinto.newBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Biblioteca")
+				.getLabirinto();
 	}
 	@Test
 	void testGetStanzaIniziale_Esistente(){

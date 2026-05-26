@@ -3,8 +3,9 @@ package it.uniroma3.diadia;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
+
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ public class PartiteSimulate {
 
 	@Test
 	public void testPartitaMonolocaleVittoriaStart() throws Exception {
-		Labirinto labirinto=new LabirintoBuilder()
+		Labirinto labirinto=Labirinto.newBuilder()
 				.addStanzaIniziale("Biblioteca")
 				.addStanzaVincente("Biblioteca")
 				.getLabirinto();
@@ -25,10 +26,10 @@ public class PartiteSimulate {
 	@Test
     public void testPartitaBilocaleSpostamentoEVittoria() throws Exception {
         // 1. Costruiamo un bilocale collegato
-        Labirinto labirinto = new LabirintoBuilder()
+        Labirinto labirinto = Labirinto.newBuilder()
                 .addStanzaIniziale("Atrio")
                 .addStanzaVincente("Biblioteca")
-                .addAdiacenza("Atrio", "Biblioteca", "nord")
+                .addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
                 .getLabirinto();
 
         // 2. Sceneggiatura: il giocatore guarda la stanza, va a nord, e vince
@@ -46,11 +47,11 @@ public class PartiteSimulate {
     }
 	@Test
 	public void testEsplorazioneSemplice() throws Exception {
-		Labirinto labirinto=new LabirintoBuilder()
+		Labirinto labirinto=Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.addStanza("Aula N11")
 				.addStanzaVincente("Segreteria")
-				.addAdiacenza("Atrio", "Aula N11", "est")
+				.addAdiacenza("Atrio", "Aula N11", Direzione.EST)
 				.getLabirinto();
 		List<String> comandiSimulati=Arrays.asList("vai est", "prendi osso", "fine");
 		IOSimulator io=new IOSimulator(comandiSimulati);

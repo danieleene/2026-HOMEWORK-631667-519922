@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 import it.uniroma3.diadia.IO;
@@ -32,9 +33,16 @@ public class ComandoVai extends AbstractComando{
 			this.io.mostraMessaggio("Dove vuoi andare?" + "Devi specificare una direzione");
 			return;
 		}
-		prossimaStanza=stanzaCorrente.getStanzaAdiacente(this.direzione);
+		Direzione dir=null;
+		try {
+			dir=Direzione.valueOf(this.direzione.toUpperCase());
+		}catch(IllegalArgumentException e) {
+			this.io.mostraMessaggio("Direzione non valida! Scegli tra: NORD, EST, SUD, OVEST ");
+			return;
+		}
+		prossimaStanza=stanzaCorrente.getStanzaAdiacente(dir);
 		if(prossimaStanza==null) {
-			this.io.mostraMessaggio("Direzione inesistente");
+			this.io.mostraMessaggio("Direzione inesistente (nessuna uscita)");
 			return;
 		}
 		partita.setStanzaCorrente(prossimaStanza);
@@ -43,7 +51,7 @@ public class ComandoVai extends AbstractComando{
 		if (personaggio != null)
 		    this.io.mostraMessaggio("Personaggio presente: " + personaggio.getNome());
 		else
-		    this.io.mostraMessaggio("Non c'è nessuno nella stanza.");
+		    this.io.mostraMessaggio("Non c'ï¿½ nessuno nella stanza.");
 
 		this.io.mostraMessaggio(partita.getStanzaCorrente().toString());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);

@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 class PartitaTest {
@@ -13,17 +13,16 @@ class PartitaTest {
 	private Partita partita;
 	@BeforeEach
 	public void setUp() {
-		Labirinto labirinto = new LabirintoBuilder()
+		Labirinto labirinto = Labirinto.newBuilder()
                 .addStanzaIniziale("Atrio")
-                .addStanza("Biblioteca")
-                .addAdiacenza("Atrio", "Biblioteca", "nord")
+                .addStanzaVincente("Biblioteca")
+                .addAdiacenza("Atrio", "Biblioteca", Direzione.NORD)
                 .getLabirinto();
 		this.partita=new Partita(labirinto);
 	}
 	@Test
 	public void testVintaFinePartita() {
-		Stanza vincente= this.partita.getStanzaVincente();
-		this.partita.setStanzaCorrente(vincente);
+		this.partita.setStanzaCorrente(this.partita.getStanzaVincente());
 		assertTrue(this.partita.vinta(),"La partita dovrebbe risultare vinta quando si raggiunge la stanza finale");
 	}
 	@Test

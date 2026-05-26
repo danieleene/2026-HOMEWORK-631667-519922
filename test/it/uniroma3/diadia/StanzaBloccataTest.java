@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.StanzaBloccata;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -18,20 +19,20 @@ public class StanzaBloccataTest {
 
     @Before
     public void setUp() {
-        stanzaBloccata = new StanzaBloccata("atrio", "nord", "chiave");
+        stanzaBloccata = new StanzaBloccata("atrio", Direzione.NORD, "chiave");
         stanzaNord = new Stanza("magazzino");
-        stanzaBloccata.impostaStanzaAdiacente("nord", stanzaNord);
+        stanzaBloccata.impostaStanzaAdiacente(Direzione.NORD, stanzaNord);
     }
 
     @Test
     public void testDirezioneBloccataSenzaAttrezzo() {
-        assertSame(stanzaBloccata, stanzaBloccata.getStanzaAdiacente("nord"));
+        assertSame(stanzaBloccata, stanzaBloccata.getStanzaAdiacente(Direzione.NORD));
     }
 
     @Test
     public void testDirezioneSbloccataConAttrezzo() {
         stanzaBloccata.addAttrezzo(new Attrezzo("chiave", 1));
-        assertSame(stanzaNord, stanzaBloccata.getStanzaAdiacente("nord"));
+        assertSame(stanzaNord, stanzaBloccata.getStanzaAdiacente(Direzione.NORD));
     }
 
     @Test
@@ -51,12 +52,12 @@ public class StanzaBloccataTest {
 	@Test
 	public void testDirezioneLiberaSempreAccessibile() {
 	    Stanza stanzaSud = new Stanza("giardino");
-	    stanzaBloccata.impostaStanzaAdiacente("sud", stanzaSud);
+	    stanzaBloccata.impostaStanzaAdiacente(Direzione.SUD, stanzaSud);
 	    
 	    // Il blocco è a "nord". Andare a "sud" DEVE funzionare senza chiave.
 	    assertSame("Le direzioni diverse da quella bloccata devono essere sempre accessibili",
 	               stanzaSud, 
-	               stanzaBloccata.getStanzaAdiacente("sud"));
+	               stanzaBloccata.getStanzaAdiacente(Direzione.SUD));
 	}
 	@Test
     public void testDirezioneBloccataConAttrezzoSbagliato() {
@@ -66,7 +67,7 @@ public class StanzaBloccataTest {
         // Il passaggio verso nord deve rimanere bloccato (restituire this)
         assertSame("La direzione deve rimanere bloccata se si inserisce l'attrezzo sbagliato",
                    stanzaBloccata, 
-                   stanzaBloccata.getStanzaAdiacente("nord"));
+                   stanzaBloccata.getStanzaAdiacente(Direzione.NORD));
     }
 }
 

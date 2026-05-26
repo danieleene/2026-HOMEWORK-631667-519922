@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.ComandoPosa;
 
@@ -32,7 +31,7 @@ class ComandoPosaTest {
 	@Test
 	void testPosa_AttrezzoPresenteInBorsa() {
 		// FIXTURE: Stanza iniziale vuota
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.getLabirinto();
 		Partita partita = new Partita(monolocale);
@@ -54,7 +53,7 @@ class ComandoPosaTest {
 
 	@Test
 	void testPosa_AttrezzoAssenteInBorsa() {
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.getLabirinto();
 		Partita partita = new Partita(monolocale);
@@ -72,7 +71,7 @@ class ComandoPosaTest {
 
 	@Test
 	void testPosa_SenzaParametro() {
-		Labirinto monolocale = new LabirintoBuilder()
+		Labirinto monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("Atrio")
 				.getLabirinto();
 		Partita partita = new Partita(monolocale);

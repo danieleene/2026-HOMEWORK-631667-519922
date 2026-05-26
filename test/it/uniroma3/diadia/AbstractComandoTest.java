@@ -38,8 +38,10 @@ class AbstractComandoTest {
 
 	@BeforeEach
 	void setUp() {
-		Labirinto labirinto = new Labirinto();   // uso il labirinto predefinito
-		partita = new Partita(labirinto);
+		Labirinto labirinto =Labirinto.newBuilder().addStanzaIniziale("Atrio")
+				.addStanzaVincente("Biblioteca")
+				.getLabirinto();;   // uso il labirinto predefinito
+		partita = new Partita(labirinto); 
 		comando = new ComandoTest();
 	}
 
