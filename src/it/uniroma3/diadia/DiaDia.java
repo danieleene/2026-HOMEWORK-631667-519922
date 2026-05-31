@@ -84,34 +84,9 @@ public class DiaDia {
 		try (Scanner scanner = new Scanner(System.in)){
 
 			IO io= new IOConsole(scanner);
-
-			Labirinto labirinto= Labirinto.newBuilder()
-					.addStanzaIniziale("LabCampusOne")
-					.addStanzaVincente("Biblioteca")
-					.addStanza("corridoio")
-					.addPersonaggio(new Strega("Morgana", "Non disturbarmi, umano..."))
-					//.addPersonaggio(new Mago("Merlino", "Sono un mago molto potente!", new Attrezzo("anello", 1)))
-					.addAttrezzo("chiave", 1)
-					.addAttrezzo("lanterna", 1)
-					.addStanzaBloccata("corridoio bloccato",Direzione.NORD,"chiave")
-					.addStanzaMagica("stanza magica", 1)
-					.addPersonaggio(new Strega("Morgana", "Non disturbarmi, umano..."))
-					.addStanzaBuia("stanza buia","lanterna")
-					.addPersonaggio(new Cane("Fido", "Grrrr... dammi un osso!",2))
-					.addStanza("Aula 1")
-					.addAdiacenza("LabCampusOne", "corridoio", Direzione.NORD)
-					.addAdiacenza("corridoio", "LabCampusOne", Direzione.SUD)
-					.addAdiacenza("corridoio", "corridoio bloccato", Direzione.NORD)
-					.addAdiacenza("corridoio bloccato", "corridoio", Direzione.SUD)
-					.addAdiacenza("corridoio bloccato", "Aula 1", Direzione.NORD)
-					.addAdiacenza("Aula 1", "corridoio bloccato", Direzione.SUD)
-					.addAdiacenza("Aula 1", "Biblioteca",Direzione.NORD)
-					.addAdiacenza("Biblioteca", "Aula 1", Direzione.SUD)
-					.addAdiacenza("corridoio", "stanza magica", Direzione.EST)
-					.addAdiacenza("stanza magica", "corridoio", Direzione.OVEST)
-					.addAdiacenza("corridoio", "stanza buia", Direzione.OVEST)
-					.addAdiacenza("stanza buia", "corridoio", Direzione.EST)
-					.getLabirinto();
+			
+			Labirinto labirinto = new Labirinto("labirinto.txt");  //Da modificare 
+			                                                      //con il labirinto che si desidera
 
 			DiaDia gioco = new DiaDia(labirinto,io);
 			gioco.gioca();

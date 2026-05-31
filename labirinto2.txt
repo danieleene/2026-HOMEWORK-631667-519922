@@ -1,0 +1,9 @@
+Stanze: Atrio,Biblioteca,N10,N11,N12
+StanzeMagiche: Atrio 4
+StanzeBuie: N11 lanterna
+StanzeBloccate: Biblioteca sud martello
+Inizio: N10
+Vincente: Biblioteca
+Attrezzi: martello 10 N12, lanterna 4 Atrio
+Uscite: N10 est Atrio, Atrio ovest N10, Atrio nord Biblioteca, Biblioteca sud Atrio, Atrio sud N11, N11 nord Atrio, N11 est N12, N12 ovest N11
+Personaggi: Mago Merlino Ciao bacchetta 2 N10, Cane Rex Bau 5 N12, Strega Varana Non_disturbarmi Biblioteca
